@@ -51,7 +51,11 @@ setup(
     setup_requires=['setuptools-git'],
     entry_points={
         'console_scripts': [
-            'tomb = tomb_cli.main:main'
+            'tomb = tomb_cli.main:cli'
         ],
+        'montague.config_loader': [
+            'yaml = tomb_cli.config:YAMLConfigLoader'
+        ],
+
     },
 )
