@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='tomb_testapps',
+    name='tomb_cli_testapps',
     packages=find_packages(),
     entry_points={
         'paste.app_factory': [
-            'main=tomb_testapps:simple',
+            'main=tomb_cli_testapps:simple',
         ],
     }
 )
