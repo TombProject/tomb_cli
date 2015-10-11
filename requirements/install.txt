@@ -1,5 +1,5 @@
 click
 mako
 montague
-pyramid
+pyramid>=1.6a2
 PyYAML

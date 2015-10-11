@@ -56,6 +56,8 @@ setup(
         'montague.config_loader': [
             'yaml = tomb_cli.config:YAMLConfigLoader'
         ],
-
+        'tomb.commands': [
+            'routes = tomb_cli.routes:routes'
+        ]
     },
 )
