@@ -21,7 +21,7 @@ def safe_load_app(config_file, name='main'):
 
 
 class Config(object):
-    def __init__(self, config_file, env):
+    def __init__(self, config_file, app_env, server_env):
         self.config_file = config_file
 
         if not os.path.isfile(config_file):
@@ -29,8 +29,10 @@ class Config(object):
                 "%s was not found, please create it or use -c" % config_file
             )
             sys.exit(1)
-        self.env = env
-        self.app = safe_load_app(config_file, name=env)
+        self.app_env = app_env
+        self.server_env = server_env
+
+        self.app = safe_load_app(config_file, name=app_env)
         self.pyramid_env = prepare()
 
 
@@ -42,15 +44,21 @@ class Config(object):
     help='The application configuration file, defaults to app.yaml'
 )
 @click.option(
-    '--env', '-e',
+    '--app-env', '-a',
     required=False,
     default='main',
-    help='The configuration environment to load, defaults to main'
+    help='The app configuration environment to load, defaults to main'
+)
+@click.option(
+    '--server-env', '-s',
+    required=False,
+    default='main',
+    help='The server configuration environment to load, defaults to main'
 )
 @click.version_option()
 @click.pass_context
-def cli(ctx, config, env):
-    obj = Config(config, env)
+def cli(ctx, config, app_env, server_env):
+    obj = Config(config, app_env, server_env)
     ctx.obj = obj
 
 

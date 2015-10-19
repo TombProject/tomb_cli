@@ -57,7 +57,8 @@ setup(
             'yaml = tomb_cli.config:YAMLConfigLoader'
         ],
         'tomb.commands': [
-            'routes = tomb_cli.routes:routes'
+            'routes = tomb_cli.routes:routes',
+            'serve = tomb_cli.serve:serve',
         ]
     },
 )
