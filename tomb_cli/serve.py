@@ -1,5 +1,4 @@
 import click
-from pyramid_cli.cli import main
 from montague import load_server
 
 @click.command()
