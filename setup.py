@@ -2,16 +2,13 @@ from setuptools import setup, find_packages
 
 # To use a consistent encoding
 from codecs import open
-from pip.req import parse_requirements
-from pip.download import PipSession
 
 import os
 
-# parse_requirements() returns generator of pip.req.InstallRequirement objects
-install_reqs = parse_requirements(
-    'requirements/install.txt', session=PipSession()
-)
-reqs = [str(ir.req) for ir in install_reqs]
+# As of pip 10.0.0 pip no longer keeps their internal
+# APIs in the same place, and suggests not using them.
+with open('requirements/install.txt', 'r') as f:
+    reqs = f.readlines()
 
 here = os.path.abspath(os.path.dirname(__file__))
 
